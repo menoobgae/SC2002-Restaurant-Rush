@@ -1,23 +1,30 @@
 package restaurantrush;
-
 import java.util.ArrayList;
 import java.util.List;
 
-/** Owner: P2. The list of items customers can choose from. */
 public class Menu {
-    private final List<MenuItem> items;
+    private List<MenuItem> items; // List<MenuItem> instead of List<Dish> add future meals like ComboMeal
 
-    public Menu(List<MenuItem> items) {
-        this.items = new ArrayList<>(items);
+    public Menu() {
+        items = new ArrayList<>();
     }
-
+    
     public List<MenuItem> getItems() {
-        // TODO (P2): return a read-only view
-        throw new UnsupportedOperationException("TODO: P2");
+        return new ArrayList<>(items);
     }
 
     public MenuItem find(String name) {
-        // TODO (P2): return the item with this name, or null
-        throw new UnsupportedOperationException("TODO: P2");
+        for (MenuItem item : items) {
+            if (item.getName().equalsIgnoreCase(name)) {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    public void addItem(MenuItem item) {
+        if (item != null) {
+        items.add(item);
+        }
     }
 }
